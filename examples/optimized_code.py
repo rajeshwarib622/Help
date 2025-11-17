@@ -120,6 +120,8 @@ def process_timestamps_optimized(records):
     import datetime
     
     # Create once, reuse for all records
+    # Note: All records get the same timestamp intentionally
+    # If you need unique timestamps, this optimization doesn't apply
     current_time = datetime.datetime.now()
     iso_time = current_time.isoformat()
     timestamp = current_time.timestamp()
@@ -137,6 +139,8 @@ def process_timestamps_optimized(records):
 def filter_data_optimized(data, threshold):
     """Filter using list comprehension - single pass"""
     # Single pass, no copying or removal operations
+    # Note: Returns a new list. For very large datasets where memory is a concern,
+    # consider using a generator: (item for item in data if item['value'] >= threshold)
     return [item for item in data if item['value'] >= threshold]
 
 

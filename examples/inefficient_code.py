@@ -135,9 +135,13 @@ def filter_data_inefficient(data, threshold):
     filtered = data.copy()
     
     # Remove items that don't meet threshold
-    for item in data:
-        if item['value'] < threshold:
-            filtered.remove(item)  # O(n) operation for each removal
+    # O(n²) - iterates list AND each remove() is O(n)
+    i = 0
+    while i < len(filtered):
+        if filtered[i]['value'] < threshold:
+            filtered.pop(i)  # O(n) operation for each removal
+        else:
+            i += 1
     
     return filtered
 
