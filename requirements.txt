@@ -1,0 +1,7 @@
+# No external dependencies required for basic examples
+# All examples use Python standard library only
+
+# Optional: For advanced profiling and analysis
+# line_profiler==4.1.1
+# memory_profiler==0.61.0
+# py-spy==0.3.14
